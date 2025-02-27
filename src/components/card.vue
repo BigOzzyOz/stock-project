@@ -1,12 +1,35 @@
 <template>
   <div class="card">
-    <slot></slot>
+    <h3>Stock Daten für {{ sheetName }}</h3>
+    <ul v-if="stocks.length">
+      <li v-for="(item, index) in stocks" :key="index">
+        {{ item.name }} - {{ item.price }}€
+      </li>
+    </ul>
+    <p v-else>Keine Daten verfügbar...</p>
   </div>
 </template>
 
 <script>
+import { fetchStockData } from "../services/stockService";
+
 export default {
   name: "CardComponent",
+  props: {
+    sheetName: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      stocks: [],
+    };
+  },
+  async created() {
+    this.stocks = await fetchStockData(this.sheetName);
+    console.log(this.stocks);
+  },
 };
 </script>
 

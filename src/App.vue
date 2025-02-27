@@ -1,9 +1,6 @@
 <template>
   <h1>Stock Project</h1>
-  <CardComponent>
-    <h2>Card</h2>
-    <p>lorem ipsum</p>
-  </CardComponent>
+  <CardComponent sheetName="AMZN" />
 </template>
 
 <script>
@@ -27,7 +24,7 @@ export default {
 body {
   height: 100dvh;
   width: 100dvw;
-  background: radial-gradient(71.11% 100% at 50% 0%, #020204 0%, #011f35 100%);
+  background: radial-gradient(71.11% 100% at 50% 0%, #020204 0%, #011f35 100%) fixed;
   padding: 10%;
   color: white;
 }
